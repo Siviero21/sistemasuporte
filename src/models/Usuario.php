@@ -16,13 +16,13 @@ class Usuario {
     public function encontrarPorEmail($email) {
         $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
     }
 
     public function encontrarPorEmailOuCpf($email, $cpf) {
         $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = ? OR cpf = ?");
         $stmt->execute([$email, $cpf]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
     }
 }
 ?>
