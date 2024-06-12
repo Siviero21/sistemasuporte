@@ -50,10 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="resposta">Resposta</label>
-                    <textarea class="form-control" id="resposta" name="resposta" required></textarea>
+                    <textarea class="form-control" id="resposta" name="resposta"></textarea>
                 </div>
                 <button type="submit" name="responder" class="btn btn-primary">Responder</button>
                 <button type="submit" name="finalizar" class="btn btn-danger">Finalizar Chamado</button>
+                <a type="button" href="painel.php" class="btn btn-secondary">Voltar</a>
             </form>
         </div>
     </div>

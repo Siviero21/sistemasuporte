@@ -20,7 +20,10 @@ $chamados = $chamadoController->obterChamados();
 
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Painel</h2>
+        <div class="d-flex justify-content-between mb-4">
+            <h2>Painel</h2>
+            <a type="button" href="logout.php" class="btn btn-danger">Logout</a>
+        </div>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Chamados Abertos</h5>
