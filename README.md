@@ -16,32 +16,34 @@ Este é um sistema de suporte desenvolvido em PHP no padrão MVC, utilizando Boo
 ## Estrutura do Projeto
 
 suporte/
-│
 ├── public/
-│   ├── index.php
-│   ├── login.php
-│   ├── registro.php
-│   ├── painel.php
-│   ├── abrir_chamado.php
-│   ├── ver_chamado.php
-│   └── baixar_anexo.php
-│
+│ ├── index.php
+│ ├── login.php
+│ ├── registro.php
+│ ├── painel.php
+│ ├── abrir_chamado.php
+│ ├── ver_chamado.php
+│ ├── baixar_anexo.php
+│ └── js/
+│ └── scripts.js
 ├── src/
-│   ├── config/
-│   │   └── banco.php
-│   ├── controllers/
-│   │   ├── AutenticacaoController.php
-│   │   └── ChamadoController.php
-│   ├── models/
-│   │   ├── Usuario.php
-│   │   └── Chamado.php
-│   ├── services/
-│   │   └── EmailService.php
-│   └── utils/
-│       └── helpers.php
+│ ├── config/
+│ │ └── banco.php
+│ ├── controllers/
+│ │ ├── AutenticacaoController.php
+│ │ └── ChamadoController.php
+│ ├── models/
+│ │ ├── Usuario.php
+│ │ └── Chamado.php
+│ ├── services/
+│ │ └── EmailService.php
+│ └── utils/
+│ └── helpers.php
+└── uploads/
 
 ## Estrutura do Banco de Dados
 
+```sql
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -78,3 +80,4 @@ CREATE TABLE chamados_anexos (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chamado_id) REFERENCES chamados(id)
 );
+
