@@ -3,25 +3,29 @@
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../utils/helpers.php';
 
-class AutenticacaoController {
+class AutenticacaoController
+{
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
-    public function registrar($dados) {
-        $usuario = new Usuario($this->pdo);
-        $usuarioExistente = $usuario->encontrarPorEmailOuCpf($dados['email'], $dados['cpf']);
-        if ($usuarioExistente) {
-            echo "Email ou CPF já registrado.";
-            return;
+    public function registrar($dados)
+    {
+        try {
+            $usuario = new Usuario($this->pdo);
+            $usuario->criar($dados);
+            header('Location: login.php');
+            exit();
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
-        $usuario->criar($dados);
-        header('Location: login.php');
     }
 
-    public function login($dados) {
+    public function login($dados)
+    {
         $usuario = new Usuario($this->pdo);
         $dadosUsuario = $usuario->encontrarPorEmail($dados['email']);
         if ($dadosUsuario && password_verify($dados['senha'], $dadosUsuario['senha'])) {
@@ -29,12 +33,14 @@ class AutenticacaoController {
             $_SESSION['usuario_id'] = $dadosUsuario['id'];
             $_SESSION['usuario_tipo'] = $dadosUsuario['tipo'];
             header('Location: painel.php');
+            exit();
         } else {
             echo "Credenciais inválidas.";
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_start();
         session_destroy();
         header('Location: login.php');

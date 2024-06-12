@@ -12,6 +12,7 @@ Este é um sistema de suporte desenvolvido em PHP no padrão MVC, utilizando Boo
 - Listagem de chamados
 - Visualização e resposta de chamados
 - Envio de notificações por email para colaboradores
+- Adicionar parâmetros de email para disparo
 
 ## Execução deste projeto
 Este projeto foi desenvolvido e executado utilizando o XAMPP v3.3.0 em um ambiente Windows. A configuração foi realizada usando o endereço localhost (127.0.0.1) e os vhosts (virtual hosts) do XAMPP. Abaixo está o exemplo de configuração do vhost utilizado:
@@ -60,5 +61,15 @@ CREATE TABLE chamados_anexos (
     dados_arquivo LONGBLOB NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chamado_id) REFERENCES chamados(id)
+);
+
+CREATE TABLE email_config (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    host VARCHAR(255) NOT NULL,
+    port INT NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    from_email VARCHAR(255) NOT NULL,
+    from_name VARCHAR(255) NOT NULL
 );
 

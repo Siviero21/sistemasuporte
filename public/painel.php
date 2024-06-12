@@ -24,6 +24,9 @@ $chamados = $chamadoController->obterChamados();
             <h2>Painel</h2>
             <a type="button" href="logout.php" class="btn btn-danger">Logout</a>
         </div>
+        <div class="d-flex justify-content-between mb-4">
+            <a type="button" href="config_email.php" class="btn btn-success">Configurações de Email</a>
+        </div>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Chamados Abertos</h5>

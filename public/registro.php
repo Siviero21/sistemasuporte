@@ -3,8 +3,10 @@ require_once '../src/config/banco.php';
 require_once '../src/controllers/AutenticacaoController.php';
 
 $autenticacao = new AutenticacaoController($pdo);
+$error_message = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $autenticacao->registrar($_POST);
+    $error_message = $autenticacao->registrar($_POST);
 }
 ?>
 <!DOCTYPE html>
@@ -22,6 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Registro de Usuário</h2>
+        <?php if (!empty($error_message)): ?>
+            <div class="alert alert-danger">
+                <?php echo $error_message; ?>
+            </div>
+        <?php endif; ?>
         <form method="POST" action="">
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
@@ -47,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
-            <a type="button" href="index.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
     <script src="js/cpf_mask.js"></script>
