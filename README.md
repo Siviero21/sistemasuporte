@@ -13,33 +13,14 @@ Este é um sistema de suporte desenvolvido em PHP no padrão MVC, utilizando Boo
 - Visualização e resposta de chamados
 - Envio de notificações por email para colaboradores
 
-## Estrutura do Projeto
+## Execução deste projeto
+Este projeto foi desenvolvido e executado utilizando o XAMPP v3.3.0 em um ambiente Windows. A configuração foi realizada usando o endereço localhost (127.0.0.1) e os vhosts (virtual hosts) do XAMPP. Abaixo está o exemplo de configuração do vhost utilizado:
 
-suporte/
-├── public/
-│ ├── index.php
-│ ├── login.php
-│ ├── registro.php
-│ ├── painel.php
-│ ├── abrir_chamado.php
-│ ├── ver_chamado.php
-│ ├── baixar_anexo.php
-│ └── js/
-│ └── scripts.js
-├── src/
-│ ├── config/
-│ │ └── banco.php
-│ ├── controllers/
-│ │ ├── AutenticacaoController.php
-│ │ └── ChamadoController.php
-│ ├── models/
-│ │ ├── Usuario.php
-│ │ └── Chamado.php
-│ ├── services/
-│ │ └── EmailService.php
-│ └── utils/
-│ └── helpers.php
-└── uploads/
+<VirtualHost *:80>
+    ServerAdmin webmaster@suporte.com
+    DocumentRoot "C:/xampp/htdocs/suporte/public"
+    ServerName suporte.com
+</VirtualHost>
 
 ## Estrutura do Banco de Dados
 
